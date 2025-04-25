@@ -1,8 +1,8 @@
 <?php
-
+// Hicimos la conexion
 include_once 'db/conexion.php';
 
-// Sentencia SQL
+// Sentencia SQL (LEER)
 $sql_leer = 'SELECT * FROM colores';
 
 // Preparar 
@@ -12,12 +12,16 @@ $gsent->execute();
 // Devolvemos un array con fetchAll
 $resultado = $gsent->fetchAll();
 
-var_dump($resultado);
+// var_dump($resultado);
+
+// AGREGAR
+
+
 
 ?>
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="utf-8">
@@ -35,11 +39,24 @@ var_dump($resultado);
         <div class="row">
             <div class="col-md-6">
                 <?php foreach ($resultado as $dato): ?>
-                    <div class="alert alert-primary" role="alert">
-                        A simple primary alert—check it out!
+                    <div
+                        class="alert alert-<?php echo $dato['color'] ?> text-uppercase" role="alert">
+                        <?php echo $dato['color'] ?>
+                        -
+                        <?php echo $dato['descripcion'] ?>
                     </div>
 
                 <?php endforeach ?>
+            </div>
+            <!-- Implementamos formulario para  agregar los elementos -->
+            <div class="col-md-6">
+                <h2>Agregar Elementos</h2>
+                <form>
+                    <input type="text" class="form-control" name="color"
+                        placeholder="Color">
+                    <input type="text" class="form-control mt-3" name="descripcion" placeholder="Descripcion">
+                    <button class="btn btn-primary mt-3">Agregar</button>
+                </form>
             </div>
         </div>
 
