@@ -9,7 +9,9 @@ $pass = 'man777';
 try {
 
     $pdo = new PDO($link, $usuario, $pass);
-    echo 'Conectado';
+    // echo 'Conectado'; debug
+
+
 } catch (PDOException $ex) {
     echo 'Error' . $ex->getMessage();
     die('No se pudo conectar a la base de datos.');
