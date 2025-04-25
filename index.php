@@ -36,6 +36,8 @@ if ($_POST) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
 </head>
 
 <body>
@@ -48,10 +50,15 @@ if ($_POST) {
             <div class="col-md-6">
                 <?php foreach ($resultado as $dato): ?>
                     <div
-                        class="alert alert-<?php echo $dato['color'] ?> text-uppercase" role="alert">
+                        class="alert alert-<?php echo $dato['color'] ?> text-uppercase
+                        d-flex justify-content-between align-items-center" role="alert">
                         <?php echo $dato['color'] ?>
                         -
-                        <?php echo $dato['descripcion'] ?>
+                        <?php echo $dato['descripcion']
+                        ?>
+                        <a href="" class="ms-auto d-block text-end">
+                            <i class="bi bi-pencil"></i>
+                        </a>
                     </div>
 
                 <?php endforeach ?>
