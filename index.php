@@ -15,8 +15,16 @@ $resultado = $gsent->fetchAll();
 // var_dump($resultado);
 
 // AGREGAR
+if ($_POST) {
+    $color = $_POST['color'];
+    $descripcion = $_POST['descripcion'];
 
+    $sql_agregar = 'INSERT INTO colores (color,descripcion) VALUES (?,?)';
+    $sentencia_agregar = $pdo->prepare($sql_agregar);
+    $sentencia_agregar->execute(array($color, $descripcion));
 
+    header('location: index.php');
+}
 
 ?>
 
@@ -51,7 +59,7 @@ $resultado = $gsent->fetchAll();
             <!-- Implementamos formulario para  agregar los elementos -->
             <div class="col-md-6">
                 <h2>Agregar Elementos</h2>
-                <form>
+                <form method="POST">
                     <input type="text" class="form-control" name="color"
                         placeholder="Color">
                     <input type="text" class="form-control mt-3" name="descripcion" placeholder="Descripcion">
